@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+   <link rel="stylesheet" href="{% static 'tipografia.css' %}">
+    <title>MELI- LOGIN</title>
+</head>
+<body>
+    <div style="display: flex; gap: 20px; font-family: Cinzel; text-align: center; justify-content: center;">
+    <div style="background-color: #5557d4; padding: 20px; border: none; border-radius: 8px;">
+        <a style="color: white; font-family: Cinzel;" href="{% url 'automatico' %}"> VOLVER AL INICIO</a>
+
+</div>
+    </div>
+    <div class="contenedor-padre">
+        {% if user.username == 'meli' %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="Solucion" style="font-family: Cinzel; font-size: 16pt; width: 500px; height: 150px;">  COMPROBAR SOLUCIÓN: </label>
+        		<input type="number" id="solucion" name="solucion" required>
+                   <br>
+                   <br>
+
+
+                <input  style="font-family: Cinzel; font-size: 16pt; " class="mi-boton-submit" type="submit" value="MOSTRAR SOLUCIÓN" >
+
+        </form>
+        <br>
+        <h5>{{solucion}}</h5>
+        {% else %}
+        <h1>No tiene premitido ver la solución</h1>
+        {% endif %}
+        </div>
+</body>
+</html>

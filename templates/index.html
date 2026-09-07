@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tipografia.css' %}">
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=DotGothic16&display=swap" rel="stylesheet" type="text/css">
+
+    <title>MELI</title>
+</head>
+<body>
+<!--<h2><pre>-MELI-    <em><i>PALABRAS DESORDENADAS </i></em></pre></h2>-->
+
+<div style="display: flex; gap: 10px; font-family: Cinzel; text-align: center; justify-content: center;" class="mi-boton-submit">
+{% if user.username == 'meli' %}
+    <div style="background-color: #17293c;; padding: 20px; border: none; border-radius: 8px;">
+
+        <a style="color: white; font-family: Cinzel;" href="{% url 'crear_registro' %}"> REGISTRAR PALABRAS</a>
+
+
+    </div>
+
+<div style="background-color: #17293c;; padding: 20px; border: none; border-radius: 8px;">
+        <a style="color: white; font-family: Cinzel;" href="{% url 'solucion' %}">BUSCAR SOLUCIÓN</a>
+    </div>
+
+<div style="background-color: #17293c;; padding: 20px; border: none; border-radius: 8px;">
+    <a style="color: white; font-family: Cinzel;" href="{% url 'signout' %}"> SALIR</a>
+{{user.username}}
+</div>
+
+{% elif user.username == 'estudiante' %}
+
+    <div style="background-color: #17293c;; padding: 20px; border: none; border-radius: 8px;">
+        <a style="color: white; font-family: Cinzel;" href="{% url 'manual' %}"> DESORDENAR PALABRAS</a>
+    </div>
+
+<div style="background-color: #17293c;; padding: 20px; border: none; border-radius: 8px;">
+    <a style="color: white; font-family: Cinzel;" href="{% url 'signout' %}"> SALIR</a>
+{{user.username}}
+</div>
+
+{% else %}
+<div style="background-color: #17293c;; padding: 20px; border: none; border-radius: 8px;">
+        <a style="color: white; font-family: Cinzel;" href="{% url 'manual' %}"> DESORDENAR PALABRAS</a>
+    </div>
+
+    <a style="color: white; font-family: Cinzel;" href="{% url 'signin' %}"> LOGIN</a>
+
+{% endif %}
+
+</div>
+<br>
+        <form action="{% url 'automatico' %}" method="POST">
+            {% csrf_token %}
+
+                <input type="submit" value="RESOLVER - modo: aleatorio" class="mi-boton-submit" >
+
+        </form>
+        <br>
+        <form action="{% url 'deauno' %}" method="POST">
+            {% csrf_token %}
+
+                <input type="submit" value="RESOLVER - modo: ordenado" class="mi-boton-submit" >
+
+        </form>
+ <div class="contenedor-padre">
+<svg viewBox="0 0 2500 2500" width="600" height="600">
+    <!-- Círculo adaptado para soportar el grosor de 196pt -->
+    <path id="curva196pt" d="M 750,1250 A 500,500 0 1,1 1750,1250" fill="none" />
+
+    <!-- Se aumenta el letter-spacing a 25 para compensar la inclinación -->
+    <text class="texto-rotativo" font-size="196pt" font-family="Cinzel, sans-serif" font-weight="bold" fill="rgb(0, 0, 0)" letter-spacing="50">
+        <textPath href="#curva196pt" startOffset="50%" text-anchor="middle">
+            {{palabra_desordenada}}
+        </textPath>
+    </text>
+</svg>
+{% if user.username == 'meli' %}
+<details>
+  <summary style="background-color: #17293c; padding: 20px; border: none; border-radius: 8px; color: white; font-family: Cinzel;">SOLUCIÓN </summary>
+  <h1>{{respuesta}}</h1>
+  <h6>Identificador = {{iden}}</h6>
+</details>
+{% else %}
+<details>
+  <summary style="background-color: #17293c; padding: 20px; border: none; border-radius: 8px; color: white; font-family: Cinzel;">SOLUCIÓN </summary>
+
+  <h6>Identificador = {{iden}}</h6>
+</details>
+{% endif %}
+
+
+</div>
+</body>
+</html>
+

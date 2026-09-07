@@ -1,0 +1,68 @@
+.contenedor-padre {
+display: flex; /* Activa Flexbox */
+  justify-content: center; /* Centra horizontalmente en la pantalla */
+  align-items: flex-start; /* Lo mantiene en la parte superior */
+  height: 100vh; /* Ocupa todo el alto de la ventana */
+  padding-top: 20px; /* Separación opcional desde el borde superior */
+  gap: 15px;
+
+     }   
+.div-pequeno {
+  width: 200px;
+  height: 100px;
+  margin: 0px 0px 0px 0px; /* Refuerza el centrado horizontal */
+  background-color: #6edb34;
+  color: white;
+  text-align: center;
+  line-height: 100px; /* Centra el texto verticalmente */
+}
+.div-pequeno2 {
+  width: 200px;
+  height: 100px;
+  margin: 0px 0px 0px 0px; /* Refuerza el centrado horizontal */
+  background-color: #3eed49;
+  color: white;
+  text-align: center;
+  line-height: 100px; /* Centra el texto verticalmente */
+}
+
+.mi-boton-submit {
+    background-color: #17293c; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 12px 25px; /* Espaciado interno (arriba/abajo, izquierda/derecha) */
+    font-size: 16px; /* Tamaño del texto */
+    border: none; /* Elimina el borde por defecto */
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar por encima */
+    transition: background-color 0.3s ease; /* Efecto de transición suave */
+}
+
+/* Efecto al pasar el ratón por encima (Hover) */
+.mi-boton-submit:hover {
+    background-color: #5557d4; 
+}
+
+.formulario {
+    background-color: #5557d4; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 20px 35px; /* Espaciado interno (arriba/abajo, izquierda/derecha) */
+    font-size: 16px; /* Tamaño del texto */
+    border: none; /* Elimina el borde por defecto */
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar por encima */
+    transition: background-color 0.3s ease; /* Efecto de transición suave */
+    
+}
+
+form :is(input[type="text"], input[type="number"], input[type="password"], textarea) {
+    width: 100%;       /* Ocupa todo el ancho disponible */
+    padding: 12px;     /* Espaciado interno */
+    font-size: 16px;   /* Tamaño de letra más grande */
+    border-radius: 6px;/* Bordes redondeados */
+
+    
+}
+
+form textarea {
+    height: 150px;
+}
